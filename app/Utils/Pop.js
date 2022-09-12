@@ -63,7 +63,11 @@ export class Pop {
   static error(error) {
     if (error.isAxiosError) {
       const { response } = error
-      this.toast(response.data.error.message || response.data.message, 'error')
+      if (!response) {
+        return this.toast(error.message)
+      }
+      let errorObj = response.data ? response.data.error : response.data || { message: 'Invalid Request ' + response.status }
+      this.toast(errorObj.messsage || errorObj.error || 'error')
     } else {
       this.toast(error.message || error, 'error')
     }

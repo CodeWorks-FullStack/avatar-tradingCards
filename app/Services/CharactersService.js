@@ -7,7 +7,7 @@ class CharactersService {
   async getAvatarCharacters() {
     // TODO show query params ?perPage=50&page=1
     // REVIEW example of issuing get requests
-    const res = await avatarServer.get('/api/v1/characters', {
+    const res = await avatarServer.get('/api/v1/avatar', {
       params: {
         perPage: 100,
         page: 2
